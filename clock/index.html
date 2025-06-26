@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple Tailwind Clock</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen font-sans">
+
+  <h1 class="text-4xl font-bold mb-8 text-gray-800">Hii Clock</h1>
+
+  <div class="clock w-64 h-64 rounded-full bg-white shadow-lg flex items-center justify-center relative">
+    <div class="clock-face relative w-56 h-56 rounded-full border-4 border-gray-300">
+      <!-- Hour hand -->
+      <div class="hand hour-hand absolute bottom-1/2 left-1/2 w-2 h-20 bg-black rounded-md -translate-x-1/2 origin-bottom rotate-45 "></div>
+      <!-- Minute hand -->
+      <div class="hand min-hand absolute bottom-1/2 left-1/2 w-1.5 h-28 bg-gray-700 rounded-md -translate-x-1/2 origin-bottom rotate-90"></div>
+      <!-- Second hand -->
+      <div class="hand second-hand absolute bottom-1/2 left-1/2 w-1 h-32 bg-red-500 rounded-md -translate-x-1/2 origin-bottom rotate-0"></div>
+      <!-- Center dot -->
+      <div class="absolute bottom-1/2 left-1/2 w-4 h-4 bg-gray-800 rounded-full -translate-x-1/2 translate-y-1/2"></div>
+    </div>
+  </div>
+  <script>
+    const secondHand=document.querySelector('.second-hand');
+    const minuteHand=document.querySelector('.min-hand');
+    const hourHand=document.querySelector('.hour-hand');
+    function setDate(){
+        const now =new Date();
+        const seconds=now.getSeconds();
+        let secondHandDegree=(seconds/60)*360;
+        secondHand.style.transform=`rotate(${secondHandDegree}deg)`;
+
+        const minutes=now.getMinutes();
+        let minuteHandDegree=(minutes/60)*360;
+        minuteHand.style.transform=`rotate(${minuteHandDegree}deg)`;
+        
+        const hour=now.getHours();
+        let hourHandDegree=(hour%12/12)*360;
+        hourHand.style.transform=`rotate(${hourHandDegree}deg)`;
+        
+    }
+    setInterval(setDate,1000);
+    
+  </script>
+</body>
+</html>
