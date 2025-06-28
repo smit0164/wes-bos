@@ -32,7 +32,6 @@
       function handleUpdate(){
         let property=this.name=='spacing' ? `padding:${this.value}px`:this.name=='blur'?`filter:blur(${this.value}px)`:` background-color:${this.value}`;
         let element=document.querySelector('img');
-        console.log(element);
         element.style=`${property};`;
       }
       inputs.forEach(input=>input.addEventListener("mousemove",handleUpdate));
