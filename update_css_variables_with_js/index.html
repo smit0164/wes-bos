@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Css Variables with Js</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="tailwindcss">
+      @theme {
+        --color-clifford: #da373d;
+      }
+    </style>
+</head>
+<body class="bg-sky-300 flex flex-col justify-center items-center">
+
+    <h2>Update Css Variables with <span>JS</span></h2>
+    <div class="flex flex-col justify-center items-center gap-10 border-2 border-solid rounded-md m-20 p-10 bg-white">
+        <div class="controls">
+            <label for="spacing">Spacing:</label>
+            <input type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+
+            <label for="blur">Blur:</label>
+            <input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+            <label for="base">Base Color</label>
+            <input type="color" name="base" value="#ffc600">
+        </div>
+        <img src="music_crowd_image.jpg" class="h-40 w-80 p-4 border-2 border-solid" ></img>
+    </div>
+    <script>
+      let inputs=document.querySelectorAll('.controls input');
+      function handleUpdate(){
+        let property=this.name=='spacing' ? `padding:${this.value}px`:this.name=='blur'?`filter:blur(${this.value}px)`:` background-color:${this.value}`;
+        let element=document.querySelector('img');
+        console.log(element);
+        element.style=`${property};`;
+      }
+      inputs.forEach(input=>input.addEventListener("mousemove",handleUpdate));
+    </script>
+</body>
+</html>
