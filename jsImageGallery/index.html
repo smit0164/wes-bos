@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://pngimg.com/d/free_PNG90775.png">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Image gallery</title>
+</head>
+<body class="overflow-hidden">
+    <div class="panels flex h-screen">
+         <div class="panel panel1 bg-[url('images/adventure_image.jpg')] bg-cover bg-center font-bold text-white text-5xl flex-1  flex flex-col items-center justify-center transition-flex duration-500 ease-in-out">
+            <p class="flex-1 flex items-center justify-center transform transition-transform -translate-y-full duration-300 ease-in-out">Hey</p>
+            <p class="flex-1 flex items-center justify-center">Let's </p>
+            <p class="flex-1 flex items-center justify-center  transform transition-transform translate-y-full duration-300 ease-in-out">Dance</p>
+         </div>
+          <div class="panel panel2 bg-[url('images/boat_image.png')] bg-cover bg-center font-bold text-white text-5xl flex-1 flex flex-col items-center justify-center transition-flex-grow duration-500 ease-in-out">
+            <p class="flex-1 flex items-center justify-center transform transition-transform -translate-y-full duration-300 ease-in-out">Start</p>
+            <p class="flex-1 flex items-center justify-center">A New</p>
+            <p class="flex-1 flex items-center justify-center  transform transition-transform translate-y-full duration-300 ease-in-out">Journey</p>
+         </div>
+          <div class="panel panel3 bg-[url('images/buddha_image.jpeg')] bg-cover bg-center font-bold text-white text-5xl flex flex-1 flex-col items-center justify-center transition-flex-grow duration-500 ease-in-out">
+            <p class="flex-1 flex items-center justify-center transform transition-transform -translate-y-full duration-300 ease-in-out">Silence</p>
+            <p class="flex-1 flex items-center justify-center">reveals</p>
+            <p class="flex-1 flex items-center justify-center  transform transition-transform translate-y-full duration-300 ease-in-out">truth</p>
+         </div>
+          <div class="panel panel4 bg-[url('images/naturalview_image.jpg')] bg-cover bg-center font-bold text-white text-5xl flex-1 flex flex-col items-center justify-center transition-flex-grow duration-500 ease-in-out">
+            <p class="flex-1 flex items-center justify-center transform transition-transform -translate-y-full duration-300 ease-in-out">Journey </p>
+            <p class="flex-1 flex items-center justify-center">beyond</p>
+            <p class="flex-1 flex items-center justify-center  transform transition-transform translate-y-full duration-300 ease-in-out">limits</p>
+         </div>
+          <div class="panel panel5 bg-[url('images/tree_image.jpeg')] bg-cover bg-center font-bold text-white text-5xl flex-1 flex flex-col items-center justify-center transition-flex-grow duration-500 ease-in-out">
+            <p class="flex-1 flex items-center justify-center transform transition-transform -translate-y-full duration-300 ease-in-out">Nature</p>
+            <p class="flex-1 flex items-center justify-center">is</p>
+            <p class="flex-1 flex items-center justify-center transform transition-transform translate-y-full duration-300 ease-in-out">healing</p>
+         </div>
+    </div>
+    <script>
+          const panels=document.querySelectorAll('.panel');
+          function openPanel(e){
+            const firstChildElement = this.firstElementChild;
+            const lastChildElement = this.lastElementChild;
+            this.classList.add('flex-grow-[2]');
+            this.classList.remove('flex-1');
+            firstChildElement.classList.add('translate-y-0');
+            firstChildElement.classList.remove('-translate-y-full');
+            lastChildElement.classList.add('translate-y-0');
+            lastChildElement.classList.remove('translate-y-full');
+          }
+          function closePanel(e){
+              console.log(e);
+              if(e.propertyName=='flex-grow' || e.propertyName=='translate'){
+                  const firstChildElement = this.firstElementChild;
+                  const lastChildElement = this.lastElementChild;
+                  this.classList.remove('flex-grow-[2]');
+                  this.classList.add('flex-1');
+                  firstChildElement.classList.remove('translate-y-0');
+                  firstChildElement.classList.add('-translate-y-full');
+                  lastChildElement.classList.remove('translate-y-0');
+                  lastChildElement.classList.add('translate-y-full');
+              }
+          }
+          panels.forEach(panel=>panel.addEventListener('click',openPanel));
+          panels.forEach(panel=>panel.addEventListener('transitionend',closePanel))
+    </script>
+</body>
+</html>
