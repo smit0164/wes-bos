@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array-methods</title>
+</head>
+<body>
+    <h1>Array methods(some,every,find,findIndex)</h1>
+    <script>
+        const people=[
+            {
+                name:'Wes',
+                year:2000
+            },
+            {
+                name:'Smit',
+                year:2000
+            },
+            {
+                name:'Ajay',
+                year:2000
+            },
+            {
+                name:'Saral',
+                year:2000
+            },
+
+        ];
+
+    const comments=[
+        { 
+            text:'Love this!',
+            id:523424
+        },
+        { 
+            text:'Super good',
+            id:1234
+        },
+        { 
+            text:'You are the best',
+            id:5678
+        },
+        { 
+            text:'Nice Nice Nice',
+            id:9012
+        }
+
+    ];
+    //check any person which have age greater then 19
+    let IsAdult=people.some(function(person){
+        let currentDate=(new Date()).getFullYear();
+        return currentDate-person.year >=19;
+    });
+    console.log(IsAdult);
+
+    //check everyperson age is grater then 19?
+
+    let allAdult=people.every(function(person){
+      let currentDate=(new Date()).getFullYear();
+      return currentDate-person.year >=19;
+    });
+    console.log(allAdult);
+    //find the comment with the id with 9012
+
+    let comment=comments.find(function(comment){
+           return comment.id==9012;
+    });
+    console.log("comment with id(9012):",comment.text);
+
+    //splice method and slice method in javascrpit
+    //slice:slice method is return the new araay from the original array
+    const temperature=[20,50,27,28,60,45,47];
+    let slicePortion=temperature.slice(2,5);
+    console.log("SlicePortion:",slicePortion);
+    //splice:Modifies the original array.
+    //Remove/add/replace elements : splice
+     temperature.splice(2,2);//this delete the array elemnt from the starding index to count(here second argument consider as a count)
+    console.log(temperature);
+
+    </script>
+</body>
+</html>
