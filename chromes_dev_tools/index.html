@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p onClick="makeGreen()">Smit Patel</p>
+    <script>
+        const dogs=[
+            {
+                name:'Snickers',
+                age:2
+            },
+            {
+                name:'hugo',
+                age:8
+            }
+        ];
+        function makeGreen(){
+            const p =document.querySelector('p');
+            p.style.color='BADA55';
+            p.style.fontSize='50px';
+         }
+        //timing to fetch the api
+        console.time('fetching data');
+        fetch(`https://api.github.com/users/smit0164`)
+           .then(data=>data.json())
+           .then(data=>{
+               console.timeEnd('fetching data');
+               console.log(data);
+            })
+    </script>
+</body>
+</html>
