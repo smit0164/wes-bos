@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Gamedev Canvas Workshop</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      canvas {
+        background: #eee;
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+
+    <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    function getMousePos(canvas, evt) {
+      const rect = canvas.getBoundingClientRect(); 
+      return {
+        x: (evt.clientX - rect.left) * (canvas.width / rect.width),
+        y: (evt.clientY - rect.top) * (canvas.height / rect.height)
+      };
+    }
+    let start=0;
+    
+    function startDraw(e){
+      let {x,y}=getMousePos(canvas,e);
+      ctx.beginPath();
+      ctx.moveTo(x,y);
+      start=1;
+    }     
+    function endDraw(e){
+       let {x,y}=getMousePos(canvas,e);
+      ctx.lineTo(x,y);
+      ctx.stroke();
+      start=0;
+    }
+    function addLineTo(e){
+      
+        if(start==0){
+          return;
+        }
+        let {x,y}=getMousePos(canvas,e);
+        ctx.lineTo(x,y);
+
+    }
+    canvas.addEventListener('mousedown',startDraw);
+    canvas.addEventListener('mouseup',endDraw);
+    canvas.addEventListener('mousemove',addLineTo);
+
+    </script>
+</body>
+</html>
